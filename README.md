@@ -11,12 +11,12 @@ npm install webpack -g --registry=https://registry.npm.taobao.org
 npm install webpack-dev-server -g --registry=https://registry.npm.taobao.org
 ```
 
-1. Install NPM modules, execute this command in terminal:
+1. 安装NPM包依赖:
 ```
 npm install --registry=https://registry.npm.taobao.org
 ```
 
-2. Start the development server:
+2. 启动开发服务器:
 ```
 webpack-dev-server
 ```
