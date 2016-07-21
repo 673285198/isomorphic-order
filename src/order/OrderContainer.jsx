@@ -9,7 +9,7 @@ import {Tabs, TabLink, TabContent} from '../../node_modules/react-tabs-redux';
 require('./styles/order-list.less');
 
 export class OrderApp extends React.Component {
-  
+
   handleScroll(e) {
     var target = e.target;
     var THRESHOLD = 50;
@@ -24,12 +24,13 @@ export class OrderApp extends React.Component {
     var tabStyles = {
       width: '100%'
     };
+
     return <div className="views">
       <div className="view view-main">
         <div className="pages">
           <div className="page">
             <div className="page-content" onScroll={this.handleScroll.bind(this)}>
-              <Tabs 
+              <Tabs
                 name="orderTabs"
                 handleSelect={this.props.switchTabAndRequest}
                 selectedTab={this.props.selectedTab.orderTabs}

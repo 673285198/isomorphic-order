@@ -7,9 +7,9 @@ export default class OrderList extends React.Component {
     super(props);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
-  
+
   render() {
-    return 
+    return
     <Tabs>
       <div className="content-block header-tabs">
         <div className="buttons-row">

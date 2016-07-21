@@ -33,7 +33,7 @@ const store = createStore(rootReducer, {}, compose(
 // });
 
 // store.dispatch();
-store.dispatch(fetchOrdersIfNeeded('unpay')).then(() => 
+store.dispatch(fetchOrdersIfNeeded('unpay')).then(() =>
   console.log(store.getState())
 )
 
