@@ -1,0 +1,22 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+@font-face { font-family: ifont; src: url("http://at.alicdn.com/t/font_1442373896_4754455.eot?#iefix") format("embedded-opentype"), url("http://at.alicdn.com/t/font_1442373896_4754455.woff") format("woff"), url("http://at.alicdn.com/t/font_1442373896_4754455.ttf") format("truetype"), url("http://at.alicdn.com/t/font_1442373896_4754455.svg#ifont") format("svg"); }
+
+]]>
+  </style>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1" class="transform-group">
+   <g id="svg_2" transform="scale(0.1953125) ">
+    <path id="svg_3" fill="#666666" d="m959.47799,471.31948l-406.79799,0l0,-406.799l-81.36,0l0,406.799l-406.79901,0l0,81.36001l406.79901,0l0,406.79901l81.36,0l0,-406.79901l406.79799,0l0,-81.36001z"/>
+   </g>
+  </g>
+ </g>
+</svg>
