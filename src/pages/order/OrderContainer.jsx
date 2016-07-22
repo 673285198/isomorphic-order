@@ -4,7 +4,7 @@ import * as actionCreators from './orderActions';
 import OrderItem from './components/OrderItem';
 import OrderList from './components/OrderList';
 
-import {Tabs, TabLink, TabContent} from '../../node_modules/react-tabs-redux';
+import {Tabs, TabLink, TabContent} from 'react-tabs-redux';
 
 require('./styles/order-list.less');
 

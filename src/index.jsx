@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {compose, createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducer from './order/orderReducers';
-import {OrderContainer} from './order/OrderContainer';
+import rootReducer from './pages/order/orderReducers';
+import {OrderContainer} from './pages/order/OrderContainer';
 import thunkMiddleware from 'redux-thunk'
-import {fetchOrders, fetchOrdersIfNeeded} from './order/orderActions';
+import {fetchOrders, fetchOrdersIfNeeded} from './pages/order/orderActions';
 
 
 const createStoreDevTools = compose(
