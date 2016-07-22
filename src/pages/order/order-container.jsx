@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Tabs, TabLink, TabContent} from 'react-tabs-redux';
 
-import OrderItem from './components/OrderItem';
 import OrderList from './components/OrderList';
 
 
@@ -14,30 +13,35 @@ require('./styles/order-list.less');
 
 export class OrderApp extends React.Component {
 
-  handleScroll(e) {
-    var target = e.target;
-    var THRESHOLD = 50;
+  constructor(props) {
+    super(props);
+  }
+
+  handleScroll = (e) => {
+    let target = e.target;
+    let THRESHOLD = 50;
     if (target.scrollTop + target.clientHeight + THRESHOLD >= target.scrollHeight) {
-      var orderType = this.props.selectedTab.orderTabs;
+      let orderType = this.props.state.selectedTab.orderTabs;
       console.log('loadMore, orderType:', orderType);
       this.props.fetchOrdersIfNeeded(orderType, true);
     }
   }
 
   render() {
-    var tabStyles = {
+    let tabStyles = {
       width: '100%'
     };
+
+    const { state, actions } = this.props;
 
     return <div className="views">
       <div className="view view-main">
         <div className="pages">
           <div className="page">
-            <div className="page-content" onScroll={this.handleScroll.bind(this)}>
+            <div className="page-content" onScroll={this.handleScroll}>
               <Tabs
                 name="orderTabs"
-                handleSelect={this.props.switchTabAndRequest}
-                selectedTab={this.props.selectedTab.orderTabs}
+                selectedTab={state.selectedTab.orderTabs}
               >
                 <div className="content-block header-tabs">
                   <div className="buttons-row">
@@ -52,20 +56,6 @@ export class OrderApp extends React.Component {
                     </div>
                   </div>
                 </div>
-
-                <div className="tabs-animated-wrap">
-                  <div className="tabs">
-                    <TabContent for="unpay" style={tabStyles}>
-                      <OrderList orders={this.props.ordersByType.unpay && this.props.ordersByType.unpay.items || []} />
-                    </TabContent>
-                    <TabContent for="all" style={tabStyles}>
-                      <OrderList orders={this.props.ordersByType.all && this.props.ordersByType.all.items || []} />
-                    </TabContent>
-                    <TabContent for="completed" style={tabStyles}>
-                      <OrderList orders={this.props.ordersByType.completed && this.props.ordersByType.completed.items || []} />
-                    </TabContent>
-                  </div>
-                </div>
               </Tabs>
             </div>
           </div>
@@ -75,13 +65,9 @@ export class OrderApp extends React.Component {
   }
 };
 
-function mapStateToProps(state) {
-  return state;
-}
-
 
 import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import * as orderActions from '../../actions/order-actions';
 export default connect(state => ({
     state: state.order

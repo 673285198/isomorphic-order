@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from './reduces/index';
-import {OrderContainer} from './pages/order/OrderContainer';
+import OrderContainer from './pages/order/order-container';
 
 
 const createStoreDevTools = compose(
@@ -14,7 +14,17 @@ const createStoreDevTools = compose(
 
 let initialState = {
   login: {},
-  order: {},
+  order: {
+    // switchTabAndRequest
+    selectedTab: {
+      orderTabs: 'all',
+    },
+    ordersByType: {
+      unpay: {},
+      all: {},
+      completed: {},
+    }
+  },
 };
 
 const store = createStore(rootReducer, initialState, compose(
