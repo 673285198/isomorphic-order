@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {compose, createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducer from './pages/order/orderReducers';
+import thunkMiddleware from 'redux-thunk';
+
+import rootReducer from './reduces/index';
 import {OrderContainer} from './pages/order/OrderContainer';
-import thunkMiddleware from 'redux-thunk'
-import {fetchOrders, fetchOrdersIfNeeded} from './pages/order/orderActions';
 
 
 const createStoreDevTools = compose(
@@ -22,10 +22,6 @@ const store = createStore(rootReducer, initialState, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-
-store.dispatch(fetchOrdersIfNeeded('unpay')).then(() =>
-  console.log(store.getState())
-)
 
 require('./styles/framework7.ios.custom.css');
 require('./styles/basic.less');

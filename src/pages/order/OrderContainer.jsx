@@ -1,10 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import * as actionCreators from './orderActions';
+
+import {Tabs, TabLink, TabContent} from 'react-tabs-redux';
+
 import OrderItem from './components/OrderItem';
 import OrderList from './components/OrderList';
 
-import {Tabs, TabLink, TabContent} from 'react-tabs-redux';
+
+// store.dispatch(fetchOrdersIfNeeded('unpay')).then(() =>
+//   console.log(store.getState())
+// )
 
 require('./styles/order-list.less');
 
@@ -75,4 +79,14 @@ function mapStateToProps(state) {
   return state;
 }
 
-export const OrderContainer = connect(mapStateToProps, actionCreators)(OrderApp);
+
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as orderActions from '../../actions/order-actions';
+export default connect(state => ({
+    state: state.order
+  }),
+  (dispatch) => ({
+    actions: bindActionCreators(orderActions, dispatch)
+  })
+)(OrderApp);

@@ -60,7 +60,7 @@ export function fetchOrders(orderType, isLoadMore) {
         return response.json();
       }
     })
-    .then(json => 
+    .then(json =>
       disaptch(receiveOrders(orderType, json, pageNumber))
     ).catch(function(e) {
       console.log(e);

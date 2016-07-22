@@ -4,7 +4,7 @@
 
 'use strict';
 
-import * as types from '../actions/actiontypes';
+import * as types from '../actions/action-types';
 
 function signin(state, action) {
   switch (action.type) {
@@ -17,7 +17,7 @@ function signin(state, action) {
   }
 }
 
-function setLoginState(state, action) {  
+function setLoginState(state, action) {
   switch (action.type) {
     case types.SET_LOGIN_STATE_TO_HAS_LOGIN:
       return Object.assign({}, state, {loginState: 'HAS_LOGIN',userName: action.userName});

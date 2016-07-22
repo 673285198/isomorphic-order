@@ -43,7 +43,7 @@ function orders(state = {
       return Object.assign({}, state, {
         isFetching: false
       });
-    default: 
+    default:
       return state;
   }
 }
@@ -54,7 +54,7 @@ function selectedTab(state={}, action) {
       return Object.assign({}, state, {
         [action.namespace]: action.tab
       });
-    default: 
+    default:
       return state;
   }
 }
@@ -64,10 +64,3 @@ export default combineReducers({
   ordersByType,
   selectedTab
 });
-
-// export default function(state = {}, action){
-//   let newState = Object.assign({}, signin(state, action));
-//   newState = Object.assign({}, setLoginState(newState, action));
-
-//   return newState;
-// }
