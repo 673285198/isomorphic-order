@@ -42,7 +42,7 @@ export function fetchOrders(orderType, isLoadMore) {
     let tabType = tabTypeMap[orderType];
     let pageNumber = 1;
     var orderData;
-    
+
     // 获取页数
     if (isLoadMore) {
       orderData = getState().ordersByType[orderType];
