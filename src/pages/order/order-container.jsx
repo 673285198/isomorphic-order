@@ -12,7 +12,6 @@ import OrderList from './components/OrderList';
 require('./styles/order-list.less');
 
 export class OrderApp extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -54,6 +53,19 @@ export class OrderApp extends React.Component {
                     <div className="tab-link button">
                       <TabLink to="completed">已完成</TabLink>
                     </div>
+                  </div>
+                </div>
+                 <div className="tabs-animated-wrap">
+                  <div className="tabs">
+                    <TabContent for="unpay" style={tabStyles}>
+                      <OrderList orders={state.ordersByType.unpay && state.ordersByType.unpay.items || []} />
+                    </TabContent>
+                    <TabContent for="all" style={tabStyles}>
+                      <OrderList orders={state.ordersByType.all && state.ordersByType.all.items || []} />
+                    </TabContent>
+                    <TabContent for="completed" style={tabStyles}>
+                      <OrderList orders={state.ordersByType.completed && state.ordersByType.completed.items || []} />
+                    </TabContent>
                   </div>
                 </div>
               </Tabs>
