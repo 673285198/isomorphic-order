@@ -25,6 +25,9 @@ webpack-dev-server
 ## dev-log
 * 2016.07.22
 add babel-preset-stage-0 for ES6+ syntax
-> 
+> http://cntchen.github.io/2016/06/14/React%E5%86%8D%E5%AD%A6%E4%B9%A0/
+
+* 2016.07.24
+change file-system structure
 
 
