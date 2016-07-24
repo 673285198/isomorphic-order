@@ -27,11 +27,11 @@ let initialState = {
   },
 };
 
+
 const store = createStore(rootReducer, initialState, compose(
   applyMiddleware(thunkMiddleware),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
-
 
 require('./styles/framework7.ios.custom.css');
 require('./styles/basic.less');

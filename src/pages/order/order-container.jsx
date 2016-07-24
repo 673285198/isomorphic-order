@@ -26,6 +26,13 @@ export class OrderApp extends React.Component {
     }
   }
 
+  componentWillMount() {
+    console.log('componentWillMount');
+    const { state, actions } = this.props;
+    console.log(actions);
+    actions.fetchOrdersIfNeeded('all');
+  }
+
   render() {
     let tabStyles = {
       width: '100%'

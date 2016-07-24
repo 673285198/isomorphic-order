@@ -104,7 +104,7 @@ export function switchTabAndRequest(selectedTab, tabNamespace) {
 
 export function fetchOrdersIfNeeded(orderType, isLoadMore) {
   return function(dispatch, getState) {
-    if (shouldFetchOrders(getState(), orderType, isLoadMore)) {
+    if (shouldFetchOrders(getState().order, orderType, isLoadMore)) {
       return dispatch(fetchOrders(orderType, isLoadMore));
     } else {
       return Promise.resolve();
