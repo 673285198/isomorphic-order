@@ -1,3 +1,9 @@
+# node_modules/
+# !/dist/index.html
+# /dist/
+
+# !dist/mock_data/ not work
+
 node_modules/
-!dist/index.html
-dist/*
+/dist/img
+/dist/bundle.js
