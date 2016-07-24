@@ -2,8 +2,6 @@
  * by CntChen 2016.07.22
  */
 
-'use strict';
-
 import * as types from './action-types';
 
 export function setLoginStateToHasLogin(userName) {

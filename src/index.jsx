@@ -15,7 +15,6 @@ const createStoreDevTools = compose(
 let initialState = {
   login: {},
   order: {
-    // switchTabAndRequest
     selectedTab: {
       orderTabs: 'all',
     },

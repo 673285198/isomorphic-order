@@ -1,19 +1,20 @@
 import React from 'react';
-
 import {Tabs, TabLink, TabContent} from 'react-tabs-redux';
 
 import OrderList from './components/OrderList';
 
-
-// store.dispatch(fetchOrdersIfNeeded('unpay')).then(() =>
-//   console.log(store.getState())
-// )
+import fetch from 'isomorphic-fetch';
 
 require('./styles/order-list.less');
 
 export class OrderApp extends React.Component {
   constructor(props) {
     super(props);
+    this.tabTypeMap = {
+      unpay: 1,
+      all: 0,
+      completed: 2
+    }
   }
 
   handleScroll = (e) => {
@@ -28,9 +29,7 @@ export class OrderApp extends React.Component {
 
   componentWillMount() {
     console.log('componentWillMount');
-    const { state, actions } = this.props;
-    console.log(actions);
-    actions.fetchOrdersIfNeeded('all');
+    this.fetchOrdersIfNeeded('all');
   }
 
   render() {
@@ -47,6 +46,7 @@ export class OrderApp extends React.Component {
             <div className="page-content" onScroll={this.handleScroll}>
               <Tabs
                 name="orderTabs"
+                handleSelect={this.switchTabAndRequest}
                 selectedTab={state.selectedTab.orderTabs}
               >
                 <div className="content-block header-tabs">
@@ -81,6 +81,64 @@ export class OrderApp extends React.Component {
         </div>
       </div>
     </div>
+  }
+
+  shouldFetchOrders = (orderType, isLoadMore) => {
+    const orders = this.props.state.ordersByType[orderType];
+
+    if (!orders) {
+      return true;
+    } else if (orders.isFetching) {
+      return false;
+    }
+
+    if (isLoadMore && !orders.hasMore) {
+      return false;
+    }
+
+    return true;
+  }
+
+  fetchOrders = (orderType, isLoadMore) => {
+    this.props.actions.requestOrders(orderType, isLoadMore);
+
+    let tabType = this.tabTypeMap[orderType];
+    let pageNumber = 1;
+    var orderData;
+
+    // 获取页数
+    if (isLoadMore) {
+      orderData = this.props.state.ordersByType[orderType];
+      pageNumber = orderData.pageNum + 1;
+    }
+
+    fetch(`http://order.api.cfcmu.cn/member/order/orderList.json?tabType=${tabType}&pageNumber=${pageNumber}&pageSize=8`, {
+        credentials: 'include'
+      })
+      .then(response => {
+        if (response.status === 401) {
+          alert('Oops, you are not authorized.');
+          this.props.actions.requestOrdersFailed(orderType);
+        } else {
+          return response.json();
+        }
+      })
+      .then(json =>
+        this.props.actions.receiveOrders(orderType, json, pageNumber)
+      ).catch(function(e) {
+        console.log(e);
+      });
+  }
+
+  switchTabAndRequest = (selectedTab, tabNamespace) => {
+    this.props.actions.changeSelectedTab(selectedTab, tabNamespace);
+    this.fetchOrdersIfNeeded(selectedTab);
+  }
+
+  fetchOrdersIfNeeded = (orderType, isLoadMore) => {
+    if (this.shouldFetchOrders(orderType, isLoadMore)) {
+      this.fetchOrders(orderType, isLoadMore);
+    }
   }
 };
 

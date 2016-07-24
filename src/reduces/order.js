@@ -1,6 +1,14 @@
-import { combineReducers } from 'redux';
+import {
+  combineReducers
+} from 'redux';
 
-import {INVALIDATE_ORDERS, REQUEST_ORDERS, RECEIVE_ORDERS, REQUEST_ORDERS_FAILED, CHANGE_SELECTED_TAB} from '../actions/action-types';
+import {
+  INVALIDATE_ORDERS,
+  REQUEST_ORDERS,
+  RECEIVE_ORDERS,
+  REQUEST_ORDERS_FAILED,
+  CHANGE_SELECTED_TAB
+} from '../actions/action-types';
 
 function ordersByType(state = {}, action) {
   switch (action.type) {
@@ -21,7 +29,7 @@ function orders(state = {
   pageNum: 1,
   items: []
 }, action) {
-  switch(action.type) {
+  switch (action.type) {
     case REQUEST_ORDERS:
       console.log('isLoadMore', action.isLoadMore);
       return Object.assign({}, state, {
@@ -48,7 +56,7 @@ function orders(state = {
   }
 }
 
-function selectedTab(state={}, action) {
+function selectedTab(state = {}, action) {
   switch (action.type) {
     case CHANGE_SELECTED_TAB:
       return Object.assign({}, state, {
@@ -58,7 +66,6 @@ function selectedTab(state={}, action) {
       return state;
   }
 }
-
 
 export default combineReducers({
   ordersByType,
