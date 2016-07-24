@@ -25,6 +25,6 @@ webpack-dev-server
 ## dev-log
 * 2016.07.22
 add babel-preset-stage-0 for ES6+ syntax
->
+> 
 
 
