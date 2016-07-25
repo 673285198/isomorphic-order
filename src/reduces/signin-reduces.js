@@ -2,15 +2,14 @@
  * by CntChen 2016.07.22
  */
 
-'use strict';
-
 import * as types from '../actions/action-types';
 
 function signin(state, action) {
   switch (action.type) {
     case types.LOGIN_IN:
       return Object.assign({}, state, {
-        loginSuccess: true,
+        //loginSuccess: true,
+        startLogin: true,
       });
     case types.LOGIN_OUT:
       return state;

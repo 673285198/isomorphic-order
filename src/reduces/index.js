@@ -2,11 +2,9 @@
  * by CntChen 2016.02.26
  */
 
-'use strict';
-
 import {combineReducers} from 'redux';
-import order from './order';
-import signin from './signin';
+import order from './order-reduces';
+import signin from './signin-reduces';
 
 // production
 // export default combineReducers({
@@ -27,5 +25,5 @@ export default function(state = {}, action){
 
   console.log(newState);
   return newState;
-}
+} 
 

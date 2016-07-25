@@ -6,13 +6,13 @@ import * as types from './action-types';
 
 export function loginIn(){
   return {
-    type: types.LOGIN_IN;
+    type: types.LOGIN_IN,
   }
 }
 
 export function loginOut(){
   return {
-    type: types.LOGIN_OUT;
+    type: types.LOGIN_OUT,
   }
 }
 

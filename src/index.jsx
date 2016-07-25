@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 
 import rootReducer from './reduces/index';
+import Signin from './pages/signin/signin'
 import OrderContainer from './pages/order/order-container';
 
 
@@ -13,7 +14,7 @@ const createStoreDevTools = compose(
 )(createStore);
 
 let initialState = {
-  login: {},
+  signin: {},
   order: {
     selectedTab: {
       orderTabs: 'all',
