@@ -31,6 +31,7 @@
 
 ## Redux简介
 >http://www.infoq.com/cn/articles/react-flux
+
 >http://cn.redux.js.org/
 
 ### 要点
@@ -44,7 +45,9 @@
 ### Actions
 action是一个对象
 * 在`actions/action-types`中添加新action的标识
-  *`actions/action-types`包含工程中所有的actions*
+
+*`actions/action-types`包含工程中所有的actions*
+
 ```
 export const LOGIN_IN = 'LOGIN_IN';
 export const LOGIN_OUT = 'LOGIN_OUT';
@@ -77,7 +80,9 @@ dispatch(setLoginStateToHasLogin('CntChen'));
 
 ### Reduces
 `reduce`是`action`的处理函数，用于修改`store`对象。
-添加`reduces/signin-reduces.js`文件。
+
+* 添加`reduces/signin-reduces.js`文件。
+
 ```
 import * as types from '../actions/action-types';
 
@@ -96,11 +101,14 @@ function signin(state, action) {
 }
 ```
 
-在`reduces/index.js`中指定`singin-reduces.js`处理`store`的哪一个部分。
+* 在`reduces/index.js`中指定`singin-reduces.js`处理`store`的哪一个部分。
+
 ```
 import {combineReducers} from 'redux';
+
 import order from './order-reduces';
 import signin from './signin-reduces';
+
 export default combineReducers({
  order,
  signin,
@@ -109,7 +117,8 @@ export default combineReducers({
 
 ### Component
 每一个component是`pages/`下**一个独立的文件夹**，可以维护自己的`style` `img` `sub components`。
-最简demo
+* 最简demo
+
 ```
 import React from 'react';
 
